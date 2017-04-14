@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>dem2photo by pix2pix</title>
+<title>Camouflage - estimated landscape by pix2pix -</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
@@ -15,13 +15,19 @@
 <body>
 <div id="map" style="width: 100%; height: 100%;">1</div>
 <script>
-var input = L.tileLayer('images/input/{z}-{x}-{y}.png');
-var output = L.tileLayer('images/output/{z}-{x}-{y}.png');
-var target = L.tileLayer('images/target/{z}-{x}-{y}.png');
+var input = L.tileLayer('images/input/{z}-{x}-{y}.png', {
+	attribution: 'GSI PNG Elevation Tiles'
+});
+var output = L.tileLayer('images/output/{z}-{x}-{y}.png', {
+	attribution: 'Estimated landscape tiles by pix2pix'
+});
+var target = L.tileLayer('images/target/{z}-{x}-{y}.png', {
+	attribution: 'GSI Seamless Photo Tiles'
+});
 var map = L.map('map', {
     center: [35, 135],
     zoom:10, minZoom: 10, maxZoom: 10,
-    layers: [output, input, target]
+    layers: [output]
 });
 L.control.layers({
 	'target': target,
